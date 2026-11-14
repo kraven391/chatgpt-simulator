@@ -97,18 +97,16 @@ ratioSelect.onchange=function(){
   if(this.value==="9-16")app.classList.add("ratio-9-16");
   else app.classList.remove("ratio-9-16");
 };
-// Auto full screen on launch / first interaction
-let fsDone=false;
+// Auto full screen on user interaction
 function triggerAutoFs(){
-  if(fsDone)return;
-  fsDone=true;
   const d=document.documentElement;
   const fn=d.requestFullscreen||d.webkitRequestFullscreen||d.mozRequestFullScreen||d.msRequestFullscreen;
-  if(fn)fn.call(d).catch(()=>{});
+  if(fn&&!document.fullscreenElement&&!document.webkitFullscreenElement){
+    fn.call(d).catch(()=>{});
+  }
   try{window.scrollTo(0,1);}catch(e){}
 }
-document.addEventListener("click",triggerAutoFs,{once:true});
-document.addEventListener("touchstart",triggerAutoFs,{once:true});
+['click','touchend'].forEach(evt=>document.addEventListener(evt,triggerAutoFs));
 const panel=document.getElementById("panel"),menu=document.getElementById("menu"),title=document.getElementById("title"),dots=document.getElementById("dots"),close=document.getElementById("close");
 const play=document.getElementById("play"),reset=document.getElementById("reset"),chat=document.getElementById("chat"),typing=document.getElementById("typing");
 // Audio is embedded in this HTML, so no separate audio file is needed.
