@@ -92,6 +92,11 @@ The King of YouTube has arrived. 👑😂</textarea></div>
 </div>
 </div>
 <script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(()=>{});
+  });
+}
 const app=document.querySelector(".app"),ratioSelect=document.getElementById("ratioSelect");
 ratioSelect.onchange=function(){
   if(this.value==="9-16")app.classList.add("ratio-9-16");
