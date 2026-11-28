@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Chat Simulator">
+<meta name="apple-mobile-web-app-title" content="WhatsApp">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="#075e54">
+<meta name="theme-color" content="#008069">
 <link rel="manifest" href="manifest.json">
-<title>Social Chat Simulator - WhatsApp & Instagram & ChatGPT</title>
+<title>WhatsApp</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-tap-highlight-color:transparent}
 html,body{width:100%;height:100%;height:100dvh;margin:0;padding:0;background:#000;overflow:hidden}
@@ -970,11 +970,7 @@ body{color:#111;display:flex;justify-content:center;align-items:center}
 
   <!-- Chat Canvas -->
   
-<div class="top-nav-tabs">
-  <a href="whatsapp.html" class="active">💬 WhatsApp</a>
-  <a href="chatgpt.html">🤖 ChatGPT</a>
-  <a href="instagram.html">📸 Instagram</a>
-</div>
+
 <div class="chat-canvas" id="chat">
     <div class="date-pill">Today</div>
     <div class="encrypt-banner">
@@ -983,10 +979,7 @@ body{color:#111;display:flex;justify-content:center;align-items:center}
   </div>
 
   <!-- Floating Play Trigger -->
-  <button class="floating-play-pill" id="floatPlayBtn">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-    ▶ Tap to Play Story
-  </button>
+  
 
   <!-- Bottom Bar -->
   <div class="bottom-bar" id="bottomBar">
@@ -1161,7 +1154,7 @@ const app = document.getElementById("app");
 const panel = document.getElementById("panel");
 const closeBtn = document.getElementById("close");
 const playBtn = document.getElementById("play");
-const floatPlayBtn = document.getElementById("floatPlayBtn");
+// floatPlayBtn removed
 const quickPlayBtn = document.getElementById("quickPlayBtn");
 const resetBtn = document.getElementById("reset");
 const chat = document.getElementById("chat");
@@ -1448,7 +1441,7 @@ async function startPlay() {
 }
 
 playBtn.onclick = startPlay;
-floatPlayBtn.onclick = startPlay;
+if (typeof floatPlayBtn !== "undefined" && floatPlayBtn) floatPlayBtn.onclick = startPlay;
 quickPlayBtn.onclick = startPlay;
 actionCircle.onclick = function() {
   if (!isCurrentlyRunning) startPlay();

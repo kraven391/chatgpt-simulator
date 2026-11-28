@@ -10,7 +10,7 @@
 <meta name="theme-color" content="#000000">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="manifest.json">
-<title>ChatGPT UI Simulator</title>
+<title>ChatGPT</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;-webkit-tap-highlight-color:transparent}
 html,body{width:100%;height:100%;height:100dvh;margin:0;padding:0;background:#000;overflow:hidden}
@@ -42,58 +42,6 @@ body{color:#ececec;display:flex;justify-content:center;align-items:center}
 .group textarea{height:90px;resize:none}
 .buttons{display:flex;gap:10px;margin-top:5px;padding-bottom:30px}.play{flex:2;border:0;border-radius:7px;padding:13px;background:#10a37f;color:#fff;font-weight:bold;font-size:14px;cursor:pointer}.reset{flex:1;border:0;border-radius:7px;padding:13px;background:#333;color:#fff;font-weight:bold;font-size:14px;cursor:pointer}
 .play:active,.reset:active,.close:active,.icon-btn:active{transform:scale(.97)}
-
-.float-play-btn{
-  position:absolute;
-  bottom:80px;
-  left:50%;
-  transform:translateX(-50%);
-  background:#10a37f;
-  color:#fff;
-  padding:10px 22px;
-  border-radius:24px;
-  font-size:14px;
-  font-weight:600;
-  box-shadow:0 4px 14px rgba(0,0,0,0.5);
-  border:0;
-  cursor:pointer;
-  z-index:900;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  transition:all .2s ease;
-}
-.float-play-btn:hover{background:#0e8e6e;transform:translateX(-50%) scale(1.04)}
-.float-play-btn:active{transform:translateX(-50%) scale(0.96)}
-.is-playing .float-play-btn{display:none !important;}
-.top-nav-tabs{
-  position:absolute;
-  top:8px;
-  left:50%;
-  transform:translateX(-50%);
-  z-index:999;
-  display:flex;
-  gap:6px;
-  background:rgba(20,20,20,0.85);
-  backdrop-filter:blur(12px);
-  padding:4px 8px;
-  border-radius:20px;
-  border:1px solid rgba(255,255,255,0.12);
-}
-.top-nav-tabs a{
-  color:#aaa;
-  text-decoration:none;
-  font-size:12px;
-  font-weight:600;
-  padding:4px 10px;
-  border-radius:14px;
-  transition:all .2s;
-}
-.top-nav-tabs a.active,.top-nav-tabs a:hover{
-  color:#fff;
-  background:#2f2f2f;
-}
-
 </style>
 </head>
 <body>
@@ -108,13 +56,6 @@ body{color:#ececec;display:flex;justify-content:center;align-items:center}
     <button class="icon-btn" id="dots" title="Script Settings"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg></button>
   </div>
 </div>
-
-<div class="top-nav-tabs">
-  <a href="whatsapp.html">💬 WhatsApp</a>
-  <a href="chatgpt.html" class="active">🤖 ChatGPT</a>
-  <a href="instagram.html">📸 Instagram</a>
-</div>
-<button id="floatPlayBtn" class="float-play-btn">▶ Tap to Play Story</button>
 <div class="chat" id="chat"></div>
 <div class="bottom">
   <div class="input-box">
@@ -184,40 +125,20 @@ menu.onclick=openPanel;title.onclick=openPanel;dots.onclick=openPanel;close.oncl
 function wait(ms){return new Promise(resolve=>setTimeout(resolve,ms))}
 function resizeTyping(){typing.style.height="34px";
 
-const floatPlayBtn = document.getElementById("floatPlayBtn");
-if (floatPlayBtn) {
-  floatPlayBtn.onclick = function() {
-    app.classList.add("is-playing");
-    play.click();
-  };
-}
 const inputBox = document.querySelector(".input-box");
 if (inputBox) {
   inputBox.onclick = function() {
-    if (!app.classList.contains("is-playing")) {
-      app.classList.add("is-playing");
-      play.click();
-    }
+    play.click();
   };
 }
 const height=typing.scrollHeight;typing.style.height=(height<=146?height:146)+"px";typing.scrollTop=typing.scrollHeight}
 function showText(text){typing.value=text;resizeTyping();typing.scrollTop=typing.scrollHeight}
 function clearTyping(){typing.value="";typing.style.height="34px";
 
-const floatPlayBtn = document.getElementById("floatPlayBtn");
-if (floatPlayBtn) {
-  floatPlayBtn.onclick = function() {
-    app.classList.add("is-playing");
-    play.click();
-  };
-}
 const inputBox = document.querySelector(".input-box");
 if (inputBox) {
   inputBox.onclick = function() {
-    if (!app.classList.contains("is-playing")) {
-      app.classList.add("is-playing");
-      play.click();
-    }
+    play.click();
   };
 }
 typing.scrollTop=0;stopTypingAudio()}
@@ -268,20 +189,10 @@ play.onclick=async function(){
 };
 typing.style.height="34px";
 
-const floatPlayBtn = document.getElementById("floatPlayBtn");
-if (floatPlayBtn) {
-  floatPlayBtn.onclick = function() {
-    app.classList.add("is-playing");
-    play.click();
-  };
-}
 const inputBox = document.querySelector(".input-box");
 if (inputBox) {
   inputBox.onclick = function() {
-    if (!app.classList.contains("is-playing")) {
-      app.classList.add("is-playing");
-      play.click();
-    }
+    play.click();
   };
 }
 
