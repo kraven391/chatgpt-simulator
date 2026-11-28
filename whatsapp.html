@@ -1051,7 +1051,7 @@ body{color:#111;display:flex;justify-content:center;align-items:center}
     <!-- Platform Selector -->
     <div class="group">
       <label>📱 Interface / Platform</label>
-      <select id="platformSelect" style="display:none;">
+      <select id="platformSelect">
         <option value="whatsapp" selected>🟢 WhatsApp (1:1 Mobile Theme)</option>
         <option value="instagram">🟣 Instagram DM (Dark Mode)</option>
         <option value="chatgpt">🤖 ChatGPT (Original Simulator)</option>
@@ -1234,7 +1234,13 @@ function updatePlatform(platform) {
   }
   resetChat();
 }
-platformSelect.onchange = function() { updatePlatform(this.value); };
+platformSelect.onchange = function() {
+  if (this.value === "chatgpt") {
+    window.location.href = "chatgpt.html";
+  } else {
+    updatePlatform(this.value);
+  }
+};
 
 // Ratio change handler
 ratioSelect.onchange = function() {

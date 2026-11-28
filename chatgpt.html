@@ -68,6 +68,13 @@ body{color:#ececec;display:flex;justify-content:center;align-items:center}
 </div>
 <div class="panel" id="panel">
   <div class="panel-header"><div class="panel-title">🎬 SCRIPT PANEL</div><button class="close" id="close">✕ Close</button></div>
+  <div class="group"><label>📱 Interface / Platform</label>
+    <select id="platformSelect">
+      <option value="chatgpt" selected>🤖 ChatGPT (AI Simulator)</option>
+      <option value="whatsapp">🟢 WhatsApp (1:1 Mobile Theme)</option>
+      <option value="instagram">🟣 Instagram DM (Dark Mode)</option>
+    </select>
+  </div>
   <div class="group"><label>📐 Screen Layout</label>
     <select id="ratioSelect">
       <option value="full" selected>📱 Full Screen (Always Full Screen Mode)</option>
@@ -193,6 +200,15 @@ const inputBox = document.querySelector(".input-box");
 if (inputBox) {
   inputBox.onclick = function() {
     play.click();
+  };
+}
+
+
+const platformSelect = document.getElementById("platformSelect");
+if (platformSelect) {
+  platformSelect.onchange = function() {
+    if (this.value === "whatsapp") window.location.href = "whatsapp.html";
+    else if (this.value === "instagram") window.location.href = "instagram.html";
   };
 }
 
