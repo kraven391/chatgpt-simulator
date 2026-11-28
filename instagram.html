@@ -953,9 +953,7 @@ body{color:#111;display:flex;justify-content:center;align-items:center}
       </div>
     </div>
     <div class="header-right">
-      <button class="header-icon" id="quickPlayBtn" title="Play Story" style="background:#25d366;width:32px;height:32px;border-radius:50%;color:#fff;">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-      </button>
+      
       <button class="header-icon" id="videoBtn">
         <svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor"><path d="M17 10.5V7a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3.5l4 4v-11l-4 4z"/></svg>
       </button>
@@ -1155,7 +1153,7 @@ const panel = document.getElementById("panel");
 const closeBtn = document.getElementById("close");
 const playBtn = document.getElementById("play");
 // floatPlayBtn removed
-const quickPlayBtn = document.getElementById("quickPlayBtn");
+// quickPlayBtn removed
 const resetBtn = document.getElementById("reset");
 const chat = document.getElementById("chat");
 const typingBox = document.getElementById("typing");
@@ -1448,7 +1446,7 @@ async function startPlay() {
 
 playBtn.onclick = startPlay;
 if (typeof floatPlayBtn !== "undefined" && floatPlayBtn) floatPlayBtn.onclick = startPlay;
-quickPlayBtn.onclick = startPlay;
+if (typeof quickPlayBtn !== "undefined" && quickPlayBtn) quickPlayBtn.onclick = startPlay;
 actionCircle.onclick = function() {
   if (!isCurrentlyRunning) startPlay();
 };
