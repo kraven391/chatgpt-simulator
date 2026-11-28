@@ -15,6 +15,10 @@
 html,body{width:100%;height:100%;height:100dvh;margin:0;padding:0;background:#000;overflow:hidden}
 body{color:#111;display:flex;justify-content:center;align-items:center}
 
+/* Base hidden state for platform-specific items */
+.camera-pill { display:none; }
+.send-text-btn { display:none; }
+
 /* Container & ratios */
 .app{
   width:100vw;
@@ -117,6 +121,7 @@ body{color:#111;display:flex;justify-content:center;align-items:center}
   height:100%;
   object-fit:cover;
 }
+.theme-whatsapp .avatar-badge{display:none}
 .theme-whatsapp .header-info{
   display:flex;
   flex-direction:column;
@@ -253,6 +258,7 @@ body{color:#111;display:flex;justify-content:center;align-items:center}
   border-top:8px solid #ffffff;
   border-left:8px solid transparent;
 }
+.theme-whatsapp .receiver-avatar{display:none;}
 .theme-whatsapp .meta{
   display:inline-flex;
   align-items:center;
@@ -270,7 +276,7 @@ body{color:#111;display:flex;justify-content:center;align-items:center}
   margin-right:2px;
 }
 
-/* WhatsApp Bottom Input Bar */
+/* WhatsApp Bottom Input Bar - Pixel-Perfect */
 .theme-whatsapp .bottom-bar{
   flex-shrink:0;
   padding:6px 8px 8px;
@@ -280,6 +286,9 @@ body{color:#111;display:flex;justify-content:center;align-items:center}
   gap:6px;
   z-index:10;
 }
+.theme-whatsapp .camera-pill{
+  display:none !important;
+}
 .theme-whatsapp .input-capsule{
   flex:1;
   min-height:46px;
@@ -288,8 +297,9 @@ body{color:#111;display:flex;justify-content:center;align-items:center}
   display:flex;
   align-items:center;
   padding:4px 12px;
-  gap:10px;
+  gap:8px;
   box-shadow:0 1px 2px rgba(0,0,0,0.12);
+  cursor:pointer;
 }
 .theme-whatsapp .input-capsule button{
   background:none;
@@ -310,6 +320,16 @@ body{color:#111;display:flex;justify-content:center;align-items:center}
   max-height:100px;
   min-height:22px;
   line-height:22px;
+  cursor:pointer;
+}
+.theme-whatsapp .input-icons{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#8696a0;
+}
+.theme-whatsapp .send-text-btn{
+  display:none !important;
 }
 .theme-whatsapp .action-circle{
   width:46px;
@@ -389,6 +409,7 @@ body{color:#111;display:flex;justify-content:center;align-items:center}
   object-fit:cover;
 }
 .theme-instagram .avatar-badge{
+  display:block;
   position:absolute;
   bottom:1px;
   right:1px;
@@ -468,6 +489,7 @@ body{color:#111;display:flex;justify-content:center;align-items:center}
   justify-content:flex-start;
 }
 .theme-instagram .receiver-avatar{
+  display:block;
   width:28px;
   height:28px;
   border-radius:50%;
@@ -502,13 +524,6 @@ body{color:#111;display:flex;justify-content:center;align-items:center}
 .theme-instagram .meta{
   display:none;
 }
-.theme-instagram .seen-label{
-  align-self:flex-end;
-  color:#8e8e8e;
-  font-size:11px;
-  margin-top:-6px;
-  margin-right:4px;
-}
 .theme-instagram .bottom-bar{
   flex-shrink:0;
   padding:8px 12px;
@@ -519,17 +534,20 @@ body{color:#111;display:flex;justify-content:center;align-items:center}
   z-index:10;
 }
 .theme-instagram .camera-pill{
+  display:flex !important;
   width:38px;
   height:38px;
   border-radius:50%;
   background:#0095f6;
   color:#fff;
   border:0;
-  display:flex;
   align-items:center;
   justify-content:center;
   cursor:pointer;
   flex-shrink:0;
+}
+.theme-instagram #emojiBtn{
+  display:none;
 }
 .theme-instagram .input-capsule{
   flex:1;
@@ -540,6 +558,7 @@ body{color:#111;display:flex;justify-content:center;align-items:center}
   align-items:center;
   padding:4px 14px;
   gap:10px;
+  cursor:pointer;
 }
 .theme-instagram .chat-input{
   flex:1;
@@ -552,6 +571,7 @@ body{color:#111;display:flex;justify-content:center;align-items:center}
   max-height:90px;
   min-height:20px;
   line-height:20px;
+  cursor:pointer;
 }
 .theme-instagram .chat-input::placeholder{
   color:#8e8e8e;
@@ -580,13 +600,13 @@ body{color:#111;display:flex;justify-content:center;align-items:center}
   display:none;
 }
 .theme-instagram.is-typing .send-text-btn{
-  display:block;
+  display:block !important;
 }
 .theme-instagram.is-typing .input-icons{
-  display:none;
+  display:none !important;
 }
 .theme-instagram .action-circle{
-  display:none;
+  display:none !important;
 }
 
 /* ============================================================ */
@@ -650,25 +670,66 @@ body{color:#111;display:flex;justify-content:center;align-items:center}
   padding:10px 14px 12px;
   background:#000;
 }
-.theme-chatgpt .camera-pill{display:none}
+.theme-chatgpt .camera-pill{display:none !important}
+.theme-chatgpt .input-icons{display:none !important}
+.theme-chatgpt .send-text-btn{display:none !important}
 .theme-chatgpt .input-capsule{
   background:#212121;
   border-radius:25px;
   min-height:48px;
   padding:7px 10px;
   gap:8px;
+  cursor:pointer;
 }
 .theme-chatgpt .chat-input{
   color:#fff;
   font-size:15px;
   line-height:21px;
+  cursor:pointer;
 }
 .theme-chatgpt .action-circle{
+  display:flex !important;
   width:34px;
   height:34px;
   border-radius:50%;
   background:#1a73e8;
   color:#fff;
+}
+
+/* ============================================================ */
+/* FLOATING PLAY CONTROLLER & BANNER */
+/* ============================================================ */
+.floating-play-pill{
+  position:absolute;
+  bottom:265px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#25d366;
+  color:#ffffff;
+  padding:10px 22px;
+  border-radius:30px;
+  font-size:14px;
+  font-weight:700;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  box-shadow:0 4px 16px rgba(0,0,0,0.35);
+  cursor:pointer;
+  z-index:90;
+  border:0;
+  transition:all .2s ease;
+}
+.floating-play-pill:hover{
+  background:#20ba59;
+  transform:translateX(-50%) scale(1.04);
+}
+.floating-play-pill:active{
+  transform:translateX(-50%) scale(0.96);
+}
+.is-playing .floating-play-pill{
+  opacity:0;
+  pointer-events:none;
+  transform:translateX(-50%) translateY(20px);
 }
 
 /* ============================================================ */
@@ -878,7 +939,7 @@ body{color:#111;display:flex;justify-content:center;align-items:center}
 
   <!-- Header -->
   <div class="header" id="header">
-    <div class="header-left" id="headerLeft">
+    <div class="header-left" id="headerLeft" title="Click to open settings panel">
       <button class="back-btn" id="backBtn">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
       </button>
@@ -892,13 +953,16 @@ body{color:#111;display:flex;justify-content:center;align-items:center}
       </div>
     </div>
     <div class="header-right">
+      <button class="header-icon" id="quickPlayBtn" title="Play Story" style="background:#25d366;width:32px;height:32px;border-radius:50%;color:#fff;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      </button>
       <button class="header-icon" id="videoBtn">
         <svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor"><path d="M17 10.5V7a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-3.5l4 4v-11l-4 4z"/></svg>
       </button>
       <button class="header-icon" id="callBtn">
         <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.44-5.15-3.75-6.59-6.59l1.97-1.57c.28-.28.37-.69.25-1.02A11.36 11.36 0 0 1 8.57 3.99c0-.55-.45-1-1-1H4.11c-.55 0-1 .45-1 1 0 9.39 7.63 17.02 17.02 17.02.55 0 1-.45 1-1v-3.44c0-.55-.45-1-1-1z"/></svg>
       </button>
-      <button class="header-icon" id="dotsBtn">
+      <button class="header-icon" id="dotsBtn" title="Open Settings Panel">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg>
       </button>
     </div>
@@ -912,12 +976,18 @@ body{color:#111;display:flex;justify-content:center;align-items:center}
     </div>
   </div>
 
+  <!-- Floating Play Trigger -->
+  <button class="floating-play-pill" id="floatPlayBtn">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+    ▶ Tap to Play Story
+  </button>
+
   <!-- Bottom Bar -->
   <div class="bottom-bar" id="bottomBar">
     <button class="camera-pill" id="cameraBtn">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
     </button>
-    <div class="input-capsule">
+    <div class="input-capsule" id="inputCapsule" title="Tap to start typing">
       <button id="emojiBtn">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
       </button>
@@ -932,7 +1002,7 @@ body{color:#111;display:flex;justify-content:center;align-items:center}
       </div>
       <button class="send-text-btn" id="sendTextBtn">Send</button>
     </div>
-    <button class="action-circle" id="actionCircle">
+    <button class="action-circle" id="actionCircle" title="Play / Send">
       <svg id="actionIcon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
         <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/><path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
       </svg>
@@ -948,7 +1018,7 @@ body{color:#111;display:flex;justify-content:center;align-items:center}
       </div>
       <div style="display:flex;gap:14px;">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/></svg>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
       </div>
     </div>
     <div class="kb-row">
@@ -1046,7 +1116,7 @@ Awwwww! Pagal ho tum bilkul! 😂❤️</textarea>
     <div class="row-2">
       <div class="group">
         <label>⏱ Start Delay (s)</label>
-        <input id="startDelay" type="number" value="0.6" step="0.1">
+        <input id="startDelay" type="number" value="0.5" step="0.1">
       </div>
       <div class="group">
         <label>⌨️ Typing Speed (ms)</label>
@@ -1056,11 +1126,11 @@ Awwwww! Pagal ho tum bilkul! 😂❤️</textarea>
     <div class="row-2">
       <div class="group">
         <label>💬 Receiver Wait (s)</label>
-        <input id="thinkingTime" type="number" value="1.0" step="0.1">
+        <input id="thinkingTime" type="number" value="0.9" step="0.1">
       </div>
       <div class="group">
         <label>⏱ Message Delay (s)</label>
-        <input id="messageDelay" type="number" value="1.2" step="0.1">
+        <input id="messageDelay" type="number" value="1.1" step="0.1">
       </div>
     </div>
 
@@ -1085,9 +1155,12 @@ const app = document.getElementById("app");
 const panel = document.getElementById("panel");
 const closeBtn = document.getElementById("close");
 const playBtn = document.getElementById("play");
+const floatPlayBtn = document.getElementById("floatPlayBtn");
+const quickPlayBtn = document.getElementById("quickPlayBtn");
 const resetBtn = document.getElementById("reset");
 const chat = document.getElementById("chat");
 const typingBox = document.getElementById("typing");
+const inputCapsule = document.getElementById("inputCapsule");
 const platformSelect = document.getElementById("platformSelect");
 const ratioSelect = document.getElementById("ratioSelect");
 const keyboardToggle = document.getElementById("keyboardToggle");
@@ -1192,8 +1265,12 @@ function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
 
 // Reset conversation
 let runId = 0;
+let isCurrentlyRunning = false;
+
 function resetChat() {
   runId++;
+  isCurrentlyRunning = false;
+  app.classList.remove("is-playing");
   stopTypingAudio();
   typingBox.value = "";
   sugWord.textContent = "Message";
@@ -1270,18 +1347,20 @@ function highlightKey(char) {
 }
 
 // Play Story Action
-playBtn.onclick = async function() {
+async function startPlay() {
   closePanel();
   resetChat();
   const thisRun = runId;
+  isCurrentlyRunning = true;
+  app.classList.add("is-playing");
 
   const userLines = document.getElementById("userLines").value.split(/\r?\n/).filter(x => x.trim() !== "");
   const aiLines = document.getElementById("aiLines").value.split(/\r?\n/).filter(x => x.trim() !== "");
 
-  let start = Math.max(0, parseFloat(document.getElementById("startDelay").value) || 0.6) * 1000;
+  let start = Math.max(0, parseFloat(document.getElementById("startDelay").value) || 0.5) * 1000;
   let speed = Math.max(1, parseInt(document.getElementById("speed").value) || 35);
-  let thinking = Math.max(0, parseFloat(document.getElementById("thinkingTime").value) || 1.0) * 1000;
-  let msgDelay = Math.max(0, parseFloat(document.getElementById("messageDelay").value) || 1.2) * 1000;
+  let thinking = Math.max(0, parseFloat(document.getElementById("thinkingTime").value) || 0.9) * 1000;
+  let msgDelay = Math.max(0, parseFloat(document.getElementById("messageDelay").value) || 1.1) * 1000;
 
   await wait(start);
   if (thisRun !== runId) return;
@@ -1305,7 +1384,7 @@ playBtn.onclick = async function() {
       }
 
       stopTypingAudio();
-      await wait(200);
+      await wait(180);
       if (thisRun !== runId) return;
 
       // Send message
@@ -1357,6 +1436,19 @@ playBtn.onclick = async function() {
       if (thisRun !== runId) return;
     }
   }
+
+  isCurrentlyRunning = false;
+  app.classList.remove("is-playing");
+}
+
+playBtn.onclick = startPlay;
+floatPlayBtn.onclick = startPlay;
+quickPlayBtn.onclick = startPlay;
+actionCircle.onclick = function() {
+  if (!isCurrentlyRunning) startPlay();
+};
+inputCapsule.onclick = function() {
+  if (!isCurrentlyRunning) startPlay();
 };
 
 // Set default 9:16 aspect ratio on launch
