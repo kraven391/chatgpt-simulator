@@ -969,7 +969,13 @@ body{color:#111;display:flex;justify-content:center;align-items:center}
   </div>
 
   <!-- Chat Canvas -->
-  <div class="chat-canvas" id="chat">
+  
+<div class="top-nav-tabs">
+  <a href="whatsapp.html" class="active">💬 WhatsApp</a>
+  <a href="chatgpt.html">🤖 ChatGPT</a>
+  <a href="instagram.html">📸 Instagram</a>
+</div>
+<div class="chat-canvas" id="chat">
     <div class="date-pill">Today</div>
     <div class="encrypt-banner">
       🔒 Messages and calls are end-to-end encrypted. No one outside of this chat, not even WhatsApp, can read or listen to them. Tap to learn more.
@@ -1052,7 +1058,7 @@ body{color:#111;display:flex;justify-content:center;align-items:center}
     <!-- Platform Selector -->
     <div class="group">
       <label>📱 Interface / Platform</label>
-      <select id="platformSelect">
+      <select id="platformSelect" style="display:none;">
         <option value="whatsapp" selected>🟢 WhatsApp (1:1 Mobile Theme)</option>
         <option value="instagram">🟣 Instagram DM (Dark Mode)</option>
         <option value="chatgpt">🤖 ChatGPT (Original Simulator)</option>
